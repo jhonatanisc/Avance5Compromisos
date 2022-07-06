@@ -1,0 +1,47 @@
+{
+    "RRHH": [
+        {
+            "Innovacion en la agenda del presente": 2,
+            "Comunicación y alineación": 3,
+            "Implementación de métricas y mejoras": 2,
+            "Visión empresarial conjunta": 2,
+            "Transformación digital": 4
+        }
+    ],
+    "JURIDICO": [
+        {
+            "Innovacion en la agenda del presente": 1,
+            "Comunicación y alineación": 4,
+            "Implementación de métricas y mejoras": 2,
+            "Visión empresarial conjunta": 2,
+            "Transformación digital": 2
+        }
+    ],
+    "NEGOCIO": [
+        {
+            "Innovacion en la agenda del presente": 2,
+            "Comunicación y alineación": 4,
+            "Implementación de métricas y mejoras": 4,
+            "Visión empresarial conjunta": 2,
+            "Transformación digital": 3
+        }
+    ],
+    "CONTRALORIA": [
+        {
+            "Innovacion en la agenda del presente": 1,
+            "Comunicación y alineación": 3,
+            "Implementación de métricas y mejoras": 2,
+            "Visión empresarial conjunta": 2,
+            "Transformación digital": 3
+        }
+    ],
+    "Totales": [
+        {
+            "Innovacion en la agenda del presente": 6,
+            "Comunicación y alineación": 7,
+            "Implementación de métricas y mejoras": 5,
+            "Visión empresarial conjunta": 4,
+            "Transformación digital": 8
+        }
+    ]
+}
