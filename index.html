@@ -104,7 +104,7 @@
                 var $select = $('#areas');
 
                 $.each(dataBoard.Avance, function (pos, object) {
-                    if (pos != 11) {
+                    if (pos != 10) {
                         $select.append('<option value=' + pos + '>' + object.Area + '</option>');
                     }
                 });
@@ -125,7 +125,7 @@
             function refill(area) {
                 var dataArea = dataBoard.Avance[area];
                 console.log(dataArea)
-                if (area == 10) {
+                if (area == 9) {
                     $('#p-comp1').css("width", ((100 / (dataBoard.Avance[11].Compromiso1 * dataBoard.Avance.length - 2)) * dataArea.Compromiso1) + "%")
                     $('#p-comp2').css("width", ((100 / (dataBoard.Avance[11].Compromiso2 * dataBoard.Avance.length - 2)) * dataArea.Compromiso2) + "%")
                     $('#p-comp3').css("width", ((100 / (dataBoard.Avance[11].Compromiso3 * dataBoard.Avance.length - 2)) * dataArea.Compromiso3) + "%")
