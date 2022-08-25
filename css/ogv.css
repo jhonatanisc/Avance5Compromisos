@@ -1,0 +1,91 @@
+.oswald-font {
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    background: linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1)), url("/imgs/dot-pattern.png");
+    background-size: 200px;
+
+}
+
+.montse-font {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1.headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5em;
+    text-align: center;
+    color: rgb(49, 49, 49);
+}
+
+.detail .headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5em;
+
+}
+
+#induction p {
+    font-size: 2em;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(49, 49, 49);
+}
+
+#description div {
+    /*border: 1px solid red*/
+}
+
+#container-compromisos {
+    padding: 1em;
+}
+
+.card {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#board label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+#board .avance {
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+}
+
+.card-5 {
+    min-height: 440px;
+}
+
+section {
+    margin: 2em;
+}
+
+.bg-success {
+    background-color: #EEC06E !important;
+}
+
+.bg-info {
+    background-color: #E96E34 !important;
+}
+
+.bg-warning {
+    background-color: #6DAA69 !important;
+}
+
+.bg-primary {
+    background-color: #5997CD !important;
+}
+
+.bg-danger {
+    background-color: #8369A7 !important;
+}
+
+.progress,
+.progress-bar {
+    overflow: unset !important;
+    border-radius: 10px;
+}

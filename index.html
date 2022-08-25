@@ -17,162 +17,9 @@
     <script src="js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .oswald-font {
-            font-family: 'Oswald', sans-serif;
-        }
+    <link href="css/ogv.css" rel="stylesheet">
 
-        .montse-font {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        h1.headline {
-            font-family: 'Oswald', sans-serif;
-            font-size: 5em;
-            text-align: center;
-            color: rgb(49, 49, 49);
-        }
-
-        .detail .headline {
-            font-family: 'Oswald', sans-serif;
-            font-size: 5em;
-
-        }
-
-        #induction p {
-            font-size: 2em;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            color: rgb(49, 49, 49);
-        }
-
-        #description div {
-            /*border: 1px solid red*/
-        }
-
-        #container-compromisos {
-            padding: 1em;
-        }
-
-        .card {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        #board label {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1em;
-        }
-
-        #board .avance {
-            margin-top: 1em;
-            margin-bottom: 1em;
-
-        }
-
-        .card {
-            min-height: 440px;
-        }
-
-        section {
-            margin: 2em;
-        }
-
-        .bg-success {
-            background-color: #EEC06E !important;
-        }
-
-        .bg-info {
-            background-color: #E96E34 !important;
-        }
-
-        .bg-warning {
-            background-color: #6DAA69 !important;
-        }
-
-        .bg-primary {
-            background-color: #5997CD !important;
-        }
-
-        .bg-danger {
-            background-color: #8369A7 !important;
-        }
-    </style>
-
-    <script>
-        var dataBoard
-
-
-        $(document).ready(function () {
-
-            $.getJSON('https://raw.githubusercontent.com/jhonatanisc/dataforboard/main/data.json', function (data) {
-                dataBoard = data;
-                var $select = $('#areas');
-
-                $.each(dataBoard.Avance, function (pos, object) {
-                    if (pos != 10) {
-                        $select.append('<option value=' + pos + '>' + object.Area + '</option>');
-                    }
-                });
-                $select.val(9)
-                var optionSelected = $("option:selected", $select);
-                var area = optionSelected.val();
-
-                refill(area);
-
-            });
-
-            $('#areas').change(function () {
-                var optionSelected = $("option:selected", this);
-                var area = optionSelected.val();
-
-                refill(area);
-            });
-            function refill(area) {
-                var dataArea = dataBoard.Avance[area];
-                console.log(dataArea)
-                if (area == 9) {
-                    var comp1 = parseInt(((100 / (dataBoard.Avance[10].Compromiso1 * dataBoard.Avance.length - 2)) * dataArea.Compromiso1)) + "%";
-                    var comp2 = parseInt(((100 / (dataBoard.Avance[10].Compromiso2 * dataBoard.Avance.length - 2)) * dataArea.Compromiso2)) + "%";
-                    var comp3 = parseInt(((100 / (dataBoard.Avance[10].Compromiso3 * dataBoard.Avance.length - 2)) * dataArea.Compromiso3)) + "%";
-                    var comp4 = parseInt(((100 / (dataBoard.Avance[10].Compromiso4 * dataBoard.Avance.length - 2)) * dataArea.Compromiso4)) + "%";
-                    var comp5 = parseInt(((100 / (dataBoard.Avance[10].Compromiso5 * dataBoard.Avance.length - 2)) * dataArea.Compromiso5)) + "%";
-                    $('#p-comp1').css("width", comp1);
-                    $('#p-comp2').css("width", comp2);
-                    $('#p-comp3').css("width", comp3);
-                    $('#p-comp4').css("width", comp4);
-                    $('#p-comp5').css("width", comp5);
-
-                    $('#porc-comp1').text("(" + dataArea.Compromiso1 + "/" + (dataBoard.Avance[10].Compromiso1 * 9) + ")");
-                    $('#porc-comp2').text("(" + dataArea.Compromiso2 + "/" + (dataBoard.Avance[10].Compromiso2 * 9) + ")");
-                    $('#porc-comp3').text("(" + dataArea.Compromiso3 + "/" + (dataBoard.Avance[10].Compromiso3 * 9) + ")");
-                    $('#porc-comp4').text("(" + dataArea.Compromiso4 + "/" + (dataBoard.Avance[10].Compromiso4 * 9) + ")");
-                    $('#porc-comp5').text("(" + dataArea.Compromiso5 + "/" + (dataBoard.Avance[10].Compromiso5 * 9) + ")");
-
-                } else {
-                    var comp1 = parseInt(((100 / dataBoard.Avance[10].Compromiso1) * dataArea.Compromiso1)) + "%";
-                    var comp2 = parseInt(((100 / dataBoard.Avance[10].Compromiso2) * dataArea.Compromiso2)) + "%";
-                    var comp3 = parseInt(((100 / dataBoard.Avance[10].Compromiso3) * dataArea.Compromiso3)) + "%";
-                    var comp4 = parseInt(((100 / dataBoard.Avance[10].Compromiso4) * dataArea.Compromiso4)) + "%";
-                    var comp5 = parseInt(((100 / dataBoard.Avance[10].Compromiso5) * dataArea.Compromiso5)) + "%";
-                    $('#p-comp1').css("width", comp1);
-                    $('#p-comp2').css("width", comp2);
-                    $('#p-comp3').css("width", comp3);
-                    $('#p-comp4').css("width", comp4);
-                    $('#p-comp5').css("width", comp5);
-
-                    $('#porc-comp1').text("(" + dataArea.Compromiso1 + "/" + dataBoard.Avance[10].Compromiso1 + ")");
-                    $('#porc-comp2').text("(" + dataArea.Compromiso2 + "/" + dataBoard.Avance[10].Compromiso2 + ")");
-                    $('#porc-comp3').text("(" + dataArea.Compromiso3 + "/" + dataBoard.Avance[10].Compromiso3 + ")");
-                    $('#porc-comp4').text("(" + dataArea.Compromiso4 + "/" + dataBoard.Avance[10].Compromiso4 + ")");
-                    $('#porc-comp5').text("(" + dataArea.Compromiso5 + "/" + dataBoard.Avance[10].Compromiso5 + ")");
-                }
-            }
-        });
-
-
-
-    </script>
+    <script src="js/ogv.js"></script>
 </head>
 
 <body>
@@ -183,10 +30,10 @@
         <p>Tienen el objetivo de permear la cultura de cambio y mejora dentro de la organización de manera
             estructurada y sistemática.</p>
     </section>
-    <section id="description" class="container-fluid">
-        <div id="container-compromisos" class="row">
+    <section id="description" class="container">
+        <div id="container-compromisos" class="row row-cols-3 justify-content-center">
             <div class="col">
-                <div class="card text-white bg-success" id="comp-1">
+                <div class="card card-5 my-1 text-white bg-success" id="comp-1">
                     <div class="card-header">
                         <h5 class="card-title">Innovacion en la agenda del presente</h5>
                     </div>
@@ -203,7 +50,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-info" id="comp-2">
+                <div class="card card-5 my-1 text-white bg-info" id="comp-2">
                     <div class="card-header">
                         <h5 class="card-title">Comunicación y alineación</h5>
                     </div>
@@ -221,7 +68,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-warning" id="comp-3">
+                <div class="card card-5 my-1 text-white bg-warning" id="comp-3">
                     <div class="card-header">
                         <h5 class="card-title">Implementación de métricas y mejoras<h5>
                     </div>
@@ -237,7 +84,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-primary" id="comp-4">
+                <div class="card card-5 my-1 text-white bg-primary" id="comp-4">
                     <div class="card-header">
                         <h5 class="card-title">Visión empresarial conjunta</h5>
                     </div>
@@ -254,7 +101,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-danger" id="comp-5">
+                <div class="card card-5 my-1 text-white bg-danger" id="comp-5">
                     <div class="card-header">
                         <h5 class="card-title">Transformación digital</h5>
                     </div>
@@ -274,45 +121,71 @@
     </section>
     <section id="board" class="container">
         <h1 class="headline">Tablero de Avance</h1>
-        <select class="form-select" name="areas" id="areas" aria-label="Seleccionar Area">
 
         </select>
-        <div class="avance">
-            <label>Innovacion en la agenda del presente <span id="porc-comp1"></span></label>
-            <div class="progress">
-                <div id="p-comp1" class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-        <div class="avance">
-            <label>Comunicación y alineación <span id="porc-comp2"></span></label>
-            <div class="progress">
-                <div id="p-comp2" class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-        <div class="avance">
-            <label>Implementación de métricas y mejoras <span id="porc-comp3"></span></label>
-            <div class="progress">
-                <div id="p-comp3" class="progress-bar bg-warning" role="progressbar" style="width: 75%"
-                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-        <div class="avance">
-            <label>Visión empresarial conjunta <span id="porc-comp4"></span></label>
-            <div class="progress">
-                <div id="p-comp4" class="progress-bar bg-black" role="progressbar" style="width: 75%" aria-valuenow="75"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-        <div class="avance">
-            <label>Transformación digital <span id="porc-comp5"></span></label>
-            <div class="progress">
-                <div id="p-comp5" class="progress-bar bg-danger" role="progressbar" style="width: 100%"
-                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
+
+        <div class="card my-1">
+
+            <div class="card-body">
+
+
+                <h2>Avance General</h2>
+                <div class="avance">
+                    <label>Innovacion en la agenda del presente <span id="porc-comp1"></span></label>
+                    <div class="progress">
+                        <div id="p-comp1" class="progress-bar bg-success" role="progressbar"
+                            style="width: 25%; position: relative;" aria-valuenow="25" aria-valuemin="0"
+                            aria-valuemax="100"><img src="imgs/rocket1.png"
+                                style="z-index: 3; position: absolute; width:25px; height:auto; right: -30px; transform: rotate(90deg);">
+                        </div>
+                    </div>
+                </div>
+                <div class="avance">
+                    <label>Comunicación y alineación <span id="porc-comp2"></span></label>
+                    <div class="progress">
+                        <div id="p-comp2" class="progress-bar bg-info" role="progressbar"
+                            style="width: 25%; position: relative;" aria-valuenow="25" aria-valuemin="0"
+                            aria-valuemax="100"><img src="imgs/rocket2.png"
+                                style="z-index: 3; position: absolute; width:25px; height:auto; right: -30px; transform: rotate(90deg);">
+                        </div>
+                    </div>
+                    <div class="avance">
+                        <label>Implementación de métricas y mejoras <span id="porc-comp3"></span></label>
+                        <div class="progress">
+                            <div id="p-comp3" class="progress-bar bg-warning" role="progressbar"
+                                style="width: 25%; position: relative;" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100"><img src="imgs/rocket3.png"
+                                    style="z-index: 3; position: absolute; width:25px; height:auto; right: -30px; transform: rotate(90deg);">
+                            </div>
+                        </div>
+                        <div class="avance">
+                            <label>Visión empresarial conjunta <span id="porc-comp4"></span></label>
+                            <div class="progress">
+                                <div id="p-comp4" class="progress-bar bg-black" role="progressbar"
+                                    style="width: 25%; position: relative;" aria-valuenow="25" aria-valuemin="0"
+                                    aria-valuemax="100"><img src="imgs/rocket4.png"
+                                        style="z-index: 3; position: absolute; width:25px; height:auto; right: -30px; transform: rotate(90deg);">
+                                </div>
+                            </div>
+                            <div class="avance">
+                                <label>Transformación digital <span id="porc-comp5"></span></label>
+                                <div class="progress">
+                                    <div id="p-comp5" class="progress-bar bg-danger" role="progressbar"
+                                        style="width: 25%; position: relative;" aria-valuenow="25" aria-valuemin="0"
+                                        aria-valuemax="100"><img src="imgs/rocket5.png"
+                                            style="z-index: 3; position: absolute; width:25px; height:auto; right: -30px; transform: rotate(90deg);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
     </section>
+    <section class="container">
+        <section id="areas_board" class="row row-cols-3"></section>
+    </section>
+
     <footer style="background-color: rgb(218, 218, 218); margin-top: 3em;">
         <div class="row">
             <div class="col" style="text-align: center; padding: 3em;">
