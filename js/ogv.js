@@ -52,7 +52,7 @@ var dataBoard
                             "<label>Visión empresarial conjunta" + " (" + object.Compromiso4 + "/" + (dataBoard.Avance[10].Compromiso4) + ")" + "</label>" +
                             "<div class='progress'>" +
                             "<div class='progress-bar bg-retraso' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso4) * object.C4Retraso) + "%" + "' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>" +
-                            "<div id='p-comp4' class='progress-bar bg-black' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso4) * object.Compromiso4) + "%" + "' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div>" +
+                            "<div id='p-comp4' class='progress-bar bg-primary' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso4) * object.Compromiso4) + "%" + "' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "</div>" +
                             "</div>" +
                             "<div class='avance-area'>" +
