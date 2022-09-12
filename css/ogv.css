@@ -64,6 +64,10 @@ section {
     margin: 2em;
 }
 
+.bg-gray {
+    background-color: #838383 !important;
+}
+
 .bg-success {
     background-color: #EEC06E !important;
 }
@@ -84,8 +88,18 @@ section {
     background-color: #8369A7 !important;
 }
 
-.progress,
-.progress-bar {
+.bg-retraso {
+    background-color: #a5a5a5 !important;
+}
+
+.avance .progress,
+.avance .progress .progress-bar {
     overflow: unset !important;
     border-radius: 10px;
+    background-color: #00000017;
 }
+
+#areas_finalistas .card-header {
+    font-family: 'Oswald', sans-serif;
+}
+
