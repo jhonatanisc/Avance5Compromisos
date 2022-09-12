@@ -2,19 +2,25 @@ var dataBoard
 
 
         $(document).ready(function () {
-
-            $.getJSON('https://raw.githubusercontent.com/jhonatanisc/dataforboard/main/data.json', function (data) {
+            $.getJSON('https://raw.githubusercontent.com/jhonatanisc/dataforboard/main/datatest.json', function (data) {
                 refillCards(data);
                 refillGeneral();
             });
-
             function refillCards(data) {
                 dataBoard = data;
-                var $select = $('#areas');
-                $.each(dataBoard.Avance, function (pos, object) {
-                    if (pos != 10 && pos != 9) {
-                        $select.append('<option value=' + pos + '>' + object.Area + '</option>');
-                        const boards = $("#areas_board");
+               
+                var boards;
+                var areas = structuredClone(dataBoard.Avance);
+                areas.sort((b, a) => {
+                    return (a.Compromiso1 + a.Compromiso2 + a.Compromiso3 + a.Compromiso4 + a.Compromiso5) - (b.Compromiso1 + b.Compromiso2 + b.Compromiso3 + b.Compromiso4 + b.Compromiso5);
+                });
+                $.each(areas, function (pos, object) {
+                    if (object.Area != "General" && object.Area != "Totales") {
+                        if(pos < 5){
+                            boards = $("#areas_finalistas");
+                        }else{
+                            boards = $("#areas_board");
+                        }
                         boards.append(
                             "<div class='col my-1'>" +
                             "<div class='card'>" +
@@ -22,32 +28,37 @@ var dataBoard
                             "<h5 class='card-title'>" + object.Area + "</h5>" +
                             "</div>" +
                             "<div class='card-body'>" +
-                            "<div class='avance'>" +
-                            "<label>Innovacion en la agenda del presente" + " (" + object.Compromiso1 + "/" + (dataBoard.Avance[10].Compromiso1) + ")" + "</label>" +
+                            "<div class='avance-area'>" +
+                            "<label>Innovacion en la agenda del presente" + " (" + (object.Compromiso1 + object.C1Retraso) + "/" + (dataBoard.Avance[10].Compromiso1) + ")" + "</label>" +
                             "<div class='progress'>" +
+                            "<div class='progress-bar bg-retraso' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso1) * object.C1Retraso) + "%" + "' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "<div class='progress-bar bg-success' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso1) * object.Compromiso1) + "%" + "' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "</div>" +
-                            "<div class='avance'>" +
+                            "<div class='avance-area'>" +
                             "<label>Comunicación y alineación" + " (" + object.Compromiso2 + "/" + (dataBoard.Avance[10].Compromiso2) + ")" + "</label>" +
                             "<div class='progress'>" +
+                            "<div class='progress-bar bg-retraso' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso2) * object.C2Retraso) + "%" + "' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "<div id='p-comp2' class='progress-bar bg-info' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso2) * object.Compromiso2) + "%" + "' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "</div>" +
                             "</div>" +
-                            "<div class='avance'>" +
+                            "<div class='avance-area'>" +
                             "<label>Implementación de métricas y mejoras" + " (" + object.Compromiso3 + "/" + (dataBoard.Avance[10].Compromiso3) + ")" + "</label>" +
                             "<div class='progress'>" +
+                            "<div class='progress-bar bg-retraso' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso3) * object.C3Retraso) + "%" + "' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "<div id='p-comp3' class='progress-bar bg-warning' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso3) * object.Compromiso3) + "%" + "' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "</div>" +
                             "</div>" +
-                            "<div class='avance'>" +
+                            "<div class='avance-area'>" +
                             "<label>Visión empresarial conjunta" + " (" + object.Compromiso4 + "/" + (dataBoard.Avance[10].Compromiso4) + ")" + "</label>" +
                             "<div class='progress'>" +
+                            "<div class='progress-bar bg-retraso' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso4) * object.C4Retraso) + "%" + "' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "<div id='p-comp4' class='progress-bar bg-black' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso4) * object.Compromiso4) + "%" + "' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "</div>" +
                             "</div>" +
-                            "<div class='avance'>" +
+                            "<div class='avance-area'>" +
                             "<label>Transformación digital" + " (" + object.Compromiso5 + "/" + (dataBoard.Avance[10].Compromiso5) + ")" + "</label>" +
                             "<div class='progress'>" +
+                            "<div class='progress-bar bg-retraso' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso5) * object.C5Retraso) + "%" + "' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "<div id='p-comp5' class='progress-bar bg-danger' role='progressbar' style='width: " + (100 / (dataBoard.Avance[10].Compromiso5) * object.Compromiso5) + "%" + "' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100'></div>" +
                             "</div>" +
                             "</div>" +
